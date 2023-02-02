@@ -11,35 +11,74 @@
 			"type": 1,
 			"openType": "_iframe",
 			"href": "view/console/console1.html"
-		}, {
-			"id": 13,
-			"title": "数据分析",
-			"icon": "layui-icon layui-icon-console",
-			"type": 1,
-			"openType": "_iframe",
-			"href": "view/console/console2.html"
-		}, {
-			"id": 14,
-			"title": "百度一下",
-			"icon": "layui-icon layui-icon-console",
-			"type": 1,
-			"openType": "_iframe",
-			"href": "http://www.bing.com"
-		}, {
-			"id": 15,
-			"title": "主题预览",
-			"icon": "layui-icon layui-icon-console",
-			"type": 1,
-			"openType": "_iframe",
-			"href": "view/system/theme.html"
-		}, {
-			"id": 16,
-			"title": "酸爽翻倍",
-			"icon": "layui-icon layui-icon-console",
-			"type": 1,
-			"openType": "_iframe",
-			"href": "view/document/core.html"
 		}]
+	},
+    {
+		"id": "system",
+		"title": "系统管理",
+		"icon": "layui-icon layui-icon-set-fill",
+		"type": 0,
+		"href": "",
+		"children": [{
+				"id": 601,
+				"title": "用户管理",
+				"icon": "layui-icon layui-icon-face-smile",
+				"type": 1,
+				"openType": "_iframe",
+				"href": "/adm/auth/admin/list"
+			},
+
+			{
+				"id": 603,
+				"title": "权限管理",
+				"icon": "layui-icon layui-icon-face-cry",
+				"type": 1,
+				"openType": "_iframe",
+				"href": "/adm/auth/role/list"
+			},
+
+			{
+				"id": 605,
+				"title": "行为日志",
+				"icon": "layui-icon layui-icon-face-cry",
+				"type": 1,
+				"openType": "_iframe",
+				"href": "/adm/auth/log/list"
+			}
+		]
+	},	{
+		"id": "system",
+		"title": "系统管理",
+		"icon": "layui-icon layui-icon-set-fill",
+		"type": 0,
+		"href": "",
+		"children": [{
+				"id": 601,
+				"title": "用户管理",
+				"icon": "layui-icon layui-icon-face-smile",
+				"type": 1,
+				"openType": "_iframe",
+				"href": "/adm/auth/admin/list"
+			},
+
+			{
+				"id": 603,
+				"title": "权限管理",
+				"icon": "layui-icon layui-icon-face-cry",
+				"type": 1,
+				"openType": "_iframe",
+				"href": "/adm/auth/role/list"
+			},
+
+			{
+				"id": 605,
+				"title": "行为日志",
+				"icon": "layui-icon layui-icon-face-cry",
+				"type": 1,
+				"openType": "_iframe",
+				"href": "/adm/auth/log/list"
+			}
+		]
 	},
 	{
 		"id": "component",
@@ -325,40 +364,7 @@
 
 		]
 	},
-	{
-		"id": "system",
-		"title": "系统管理",
-		"icon": "layui-icon layui-icon-set-fill",
-		"type": 0,
-		"href": "",
-		"children": [{
-				"id": 601,
-				"title": "用户管理",
-				"icon": "layui-icon layui-icon-face-smile",
-				"type": 1,
-				"openType": "_iframe",
-				"href": "/adm/auth/admin/list"
-			},
 
-			{
-				"id": 603,
-				"title": "权限管理",
-				"icon": "layui-icon layui-icon-face-cry",
-				"type": 1,
-				"openType": "_iframe",
-				"href": "/adm/auth/role/list"
-			},
-
-			{
-				"id": 605,
-				"title": "行为日志",
-				"icon": "layui-icon layui-icon-face-cry",
-				"type": 1,
-				"openType": "_iframe",
-				"href": "/adm/auth/log/list"
-			}
-		]
-	},
 	{
 		"id": "common",
 		"title": "常用页面",

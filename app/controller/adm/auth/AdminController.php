@@ -14,14 +14,14 @@ class AdminController extends \app\controller\adm\_Controller
     {
         if ($this->request->isAjax()) {
             $page  = $_GET['page'];
-            $limit = $_GET['limit'] ?: 10;
+            $limit = $_GET['limit'];
 
             $where = [];
             if ($_GET['username']) {
                 $where[] = ['username', 'LIKE', '%' . $_GET['username'] . '%'];
             }
             if ($_GET['mobile']) {
-                $where[] = ['mobile', '=', $_GET['mobile']];
+                $where[] = ['mobile', 'LIKE', '%' . $_GET['mobile'] . '%'];
             }
 
             $data = (new Admin())->findList(null, $where, $page, $limit);
@@ -30,12 +30,6 @@ class AdminController extends \app\controller\adm\_Controller
         }
 
         return $this->view();
-    }
-
-
-    public function addAction()
-    {
-        return $this->editAction();
     }
 
     public function editAction()
@@ -56,11 +50,8 @@ class AdminController extends \app\controller\adm\_Controller
             if (!empty($param['password'])) {
                 $param['pwd'] = Sha1::admLoginPwd($param['password']);
             }
-            if ($param['status'] == 'on') {
-                $param['status'] = 1;
-            } else {
-                $param['status'] = 0;
-            }
+
+            $param['status'] = !empty($param['status']) ? 1 : 0;
 
             try {
                 $save = $row->save($param);
