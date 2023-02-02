@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <title>登录</title>
+        <!-- 样 式 文 件 -->
+        <link rel="stylesheet" href="/static/adm/component/pear/css/pear.css" />
+        <link rel="stylesheet" href="/static/adm/css/other/login.css" />
+    </head>
+    <!-- 代 码 结 构 -->
+    <body background="/static/adm/images/background.svg" style="background-size: cover">
+        <form class="layui-form" action="javascript:void(0);">
+            <div class="layui-form-item">
+                <img class="logo" src="/static/adm/images/logo.png" />
+                <div class="title">Admin</div>
+            </div>
+
+            <div class="layui-form-item">
+                <input type="text" placeholder="账 户 : 请输入账户 " lay-verify="required" hover class="layui-input" name="username" id="username" />
+            </div>
+
+            <div class="layui-form-item">
+                <input type="password" placeholder="密 码 : 请输入密码 " lay-verify="required" hover class="layui-input" name="password" id="password" />
+            </div>
+
+            <div class="layui-form-item">
+                <button type="button" class="layui-btn layui-btn-success login" lay-submit lay-filter="login" id="TencentCaptcha" data-appid="2051618096" data-cbfn="captchacb">登 录</button>
+            </div>
+        </form>
+        <!-- 资 源 引 入 -->
+        <script src="/static/adm/component/layui/layui.js"></script>
+        <script src="/static/adm/component/pear/pear.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+
+        <script>
+            // 回车登录
+            $(document).on("keydown", function (e) {
+                // console.log(e)
+                if (e.keyCode == 13) {
+                    $(".layui-btn").click();
+                }
+            });
+
+            window.captchacb = function (res) {
+                console.log(res);
+                // res（用户主动关闭验证码）= {ret: 2, ticket: null}
+                // res（验证成功） = {ret: 0, ticket: "String", randstr: "String"}
+                if (res.ret === 0) {
+                    login({
+                        appid: res.appid,
+                        randstr: res.randstr,
+                        ticket: res.ticket,
+                    });
+                }
+            };
+
+            function login() {
+                /// 验证
+                let username = $("#username").val();
+                let password = $("#password").val();
+                /// 登录
+                $.ajax({
+                    url: "/adm/10soo_login",
+                    type: "post",
+                    data: {
+                        username: username,
+                        password: password,
+                    },
+                    dataType: "json",
+                    beforeSend: function () {
+                        load = layer.load(1, {
+                            shade: [0.1, "#3c8dbc"],
+                        }); //0代表加载的风格，支持0-2
+                    },
+                    complete: function () {
+                        layer.close(load);
+                    },
+                    success: function (res) {
+                        console.log(res);
+                        if (res.code == 0) {
+                            layer.msg(res.msg, {
+                                icon: 2,
+                            });
+                        } else {
+                            //登入成功的提示与跳转
+                            layer.msg(
+                                "登录成功",
+                                {
+                                    icon: 6,
+                                    time: 1000,
+                                },
+                                function () {
+                                    location.href = "/adm/home/index";
+                                }
+                            );
+                        }
+                    },
+                });
+
+                return false;
+            }
+        </script>
+    </body>
+</html>

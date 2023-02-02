@@ -1,0 +1,105 @@
+{include file="../view/adm/_head.html" /}
+	<body>
+		<form class="layui-form" action="">
+			<input type="hidden" value="<?=$row['id']?>" name="id">
+			<div class="mainBox">
+				<div class="main-container">
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">角色组</label>
+						<div class="layui-input-block">
+						  <select name="32g6r" lay-verify="required" lay-search>
+							  <option value="0">请选择</option>
+							  <?php foreach($role as $v):?>
+							  <option value="<?=$v['id']?>" <?php if($row['role_id'] == $v['id']):?>selected<?php endif;?>> <?=$v['name']?></option>
+							  <?php endforeach;?>
+						  </select>
+						</div>
+					  </div>
+
+                    <div class="layui-form-item">
+						<label class="layui-form-label">账号</label>
+						<div class="layui-input-block">
+							<input type="text" id="username" name="username" value="<?=$row['username'];?>" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">密码</label>
+						<div class="layui-input-block">
+							<input type="password" id="password" name="password" value="<?=$row['pwd'];?>" lay-verify="title" autocomplete="off" placeholder="请输入密码" class="layui-input">
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">电话</label>
+						<div class="layui-input-block">
+							<input type="text" id="mobile" name="mobile" value="<?=$row['mobile'];?>" lay-verify="title" autocomplete="off" placeholder="请输入电话" class="layui-input">
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						  <label class="layui-form-label">开关</label>
+						  <div class="layui-input-inline">
+							<input type="checkbox" name="status" id="status" lay-filter="status" lay-text="ON|OFF" lay-skin="switch"  <?php if($row['status'] == 1):?>checked<?php endif;?>>
+						  </div>
+					  </div>
+
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="button-container">
+					<button type="submit" class="pear-btn pear-btn-primary pear-btn-sm" lay-submit="" lay-filter="user-save">
+						<i class="layui-icon layui-icon-ok"></i>
+						提交
+					</button>
+					<button type="reset" class="pear-btn pear-btn-sm">
+						<i class="layui-icon layui-icon-refresh"></i>
+						重置
+					</button>
+				</div>
+			</div>
+		</form>
+
+
+		<script>
+			layui.use(['form', 'jquery'], function () {
+                let form = layui.form;
+                let $ = layui.jquery;
+
+                form.on('submit(user-save)', function (data) {
+                    console.log(data.field)
+                    $.ajax({
+                        url: '/adm/auth/admin/edit?ids=' + data.field.id,
+                        data: JSON.stringify(data.field),
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        type: 'post',
+                        success: function (result) {
+                            if (result.code == 1) {
+                                layer.msg(result.msg, {
+                                    icon: 1,
+                                    time: 1000
+                                }, function () {
+                                    parent.layer.close(parent.layer.getFrameIndex(window
+                                        .name)); //关闭当前页
+                                    parent.layui.table.reload("user-table");
+                                });
+                            } else {
+                                layer.msg(result.msg, {
+                                    icon: 2,
+                                    time: 3000
+                                }, function () {
+                                    parent.layer.close(parent.layer.getFrameIndex(window
+                                        .name)); //关闭当前页
+                                    parent.layui.table.reload("user-table");
+                                })
+                            }
+                        }
+                    })
+                    return false;
+                });
+            })
+		</script>
+
+	</body></html>

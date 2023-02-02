@@ -1,0 +1,113 @@
+<body class="inside-header inside-aside ">
+    <div id="main" role="main">
+        <div class="tab-content tab-addtabs">
+            <div id="content">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                        <div class="content">
+                            <style type="text/css">
+                                @media (max-width: 375px) {
+                                    .edit-form tr td input {
+                                        width: 100%;
+                                    }
+
+                                    .edit-form tr th:first-child,
+                                    .edit-form tr td:first-child {
+                                        width: 20%;
+                                    }
+
+                                    .edit-form tr th:last-child,
+                                    .edit-form tr td:last-child {
+                                        display: none;
+                                    }
+                                }
+                            </style>
+                            <div class="panel panel-default panel-intro">
+                                <div class="panel-heading">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#basic" data-toggle="tab">基础配置</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div id="myTabContent" class="tab-content">
+                                        <div class="tab-pane fade active in" id="basic">
+                                            <div class="widget-body no-padding">
+                                                <form id="basic-form" class="edit-form form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th width="15%">变量标题</th>
+                                                                <th width="70%">变量值</th>
+                                                                <!-- <th width="15%">变量名</th> -->
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <!-- <tr>
+                                                                <td>主题</td>
+                                                                <td>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 col-sm-8">
+                                                                            <label for="row[skin]-normal"><input id="row[skin]-normal" name="row[skin]" type="radio" value="0" <?php if(!isset($row[0]['is_load']) || $row[0]['is_load'] == 0):?>checked<?php endif;?> /> 正常</label>&nbsp;&nbsp;&nbsp;
+                                                                            <label for="row[skin]-hidden"><input id="row[skin]-hidden" name="row[skin]" type="radio" value="1" <?php if(isset($row[0]['is_load']) && $row[0]['is_load'] == 1):?>checked<?php endif;?> /> 黑白色调</label>
+
+                                                                        </div>
+                                                                        <div class="col-sm-4"></div>
+                                                                    </div>
+
+                                                                </td>
+                                                                <td></td>
+                                                            </tr> -->
+                                                            <tr>
+                                                                <td>邮箱</td>
+                                                                <td>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-8 col-xs-12">
+                                                                            <input type="text" name="row[email]" value="<?=$row[1]['v']?>" class="form-control" data-rule="required" data-tip="投稿邮箱" />
+                                                                        </div>
+                                                                        <div class="col-sm-4"></div>
+                                                                    </div>
+
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>电话</td>
+                                                                <td>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-8 col-xs-12">
+                                                                            <input type="text" name="row[mobile]" value="<?=$row[2]['v']?>" class="form-control" data-rule="required" data-tip="联系电话" />
+                                                                        </div>
+                                                                        <div class="col-sm-4"></div>
+                                                                    </div>
+
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+
+                                                        <tfoot>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td>
+                                                                    <button type="submit" class="btn btn-success btn-embossed">确定</button>
+                                                                    <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
